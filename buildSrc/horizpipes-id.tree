@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE instance-profile
+        SYSTEM "https://resources.jetbrains.com/writerside/1.0/product-profile.dtd">
+
+<instance-profile id="horizpipes-id"
+                 name="Horizpipes Design Document"
+                 start-page="Horizpipes-Design-MD1.md">
+
+    <toc-element topic="Horizpipes-Design-MD1.md"/>
+</instance-profile>

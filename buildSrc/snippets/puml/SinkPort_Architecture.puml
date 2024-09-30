@@ -1,0 +1,23 @@
+@startuml
+skinparam linetype ortho
+skinparam fixCircleLabelOverlapping true
+
+frame SinkPort {
+    component SinkQueue
+    component Dispatcher
+
+    SinkQueue --> Dispatcher
+}
+
+interface FailToleranceByReplay
+SinkPort .r.> FailToleranceByReplay
+
+interface Sharder
+Dispatcher .r.> Sharder
+
+interface LoaderRegistry
+Dispatcher .r.> LoaderRegistry
+
+component LoadingQueue
+Dispatcher --> LoadingQueue
+@enduml

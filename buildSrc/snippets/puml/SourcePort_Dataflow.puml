@@ -1,0 +1,26 @@
+@startuml
+component IngestingPartition
+
+frame SourcePort {
+    component SourceTask
+    interface Replayable
+    SourceTask ..> Replayable
+
+    component TransactFormatter
+    interface SubjectEmbedding
+    TransactFormatter ..> SubjectEmbedding
+
+    component Dispatcher
+    interface BucketRegistry
+    Dispatcher ..> BucketRegistry
+
+    SourceTask -r-> TransactFormatter
+    TransactFormatter -r-> Dispatcher
+}
+
+component ProcessingBucket_1...N as buckets
+
+IngestingPartition --> SourceTask
+
+Dispatcher -r-> buckets
+@enduml

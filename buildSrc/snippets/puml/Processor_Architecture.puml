@@ -1,0 +1,36 @@
+@startuml
+skinparam linetype ortho
+
+frame Processor {
+    component ProcessingBucket_1...N
+    component TimeShiftOperator
+    component IdMaskingOperator
+    component HarmonizationOperator
+    component Dispatcher
+
+
+
+
+    ProcessingBucket_1...N --> TimeShiftOperator
+    TimeShiftOperator --> IdMaskingOperator
+    IdMaskingOperator --> HarmonizationOperator
+    HarmonizationOperator --> Dispatcher
+}
+
+interface SinkQueueRegistry
+Dispatcher .r.> SinkPortRegistry
+
+interface FailToleranceByReplay
+interface Reversible
+
+Processor ..> Reversible
+Processor ..> FailToleranceByReplay
+
+component MetadataServer
+TimeShiftOperator --> MetadataServer: get_subject_id
+IdMaskingOperator --> MetadataServer: get_standardized_keys
+
+component SinkQueue
+Dispatcher --> SinkQueue
+
+@enduml

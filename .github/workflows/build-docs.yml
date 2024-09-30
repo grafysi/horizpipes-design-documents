@@ -10,8 +10,8 @@ permissions:
   pages: write
 
 env:
-  INSTANCE: 'buildSrc/grafysi-design-docs'
-  ARTIFACT: 'webHelpGRAFYSI-DESIGN-DOCS2-all.zip'
+  INSTANCE: 'buildSrc/horizpipes-design-documents'
+  ARTIFACT: 'webHelpHORIZPIPES-DESIGN-DOCUMENTS2-all.zip'
   DOCKER_VERSION: '242.21870'
 
 jobs:

@@ -3,8 +3,8 @@
         SYSTEM "https://resources.jetbrains.com/writerside/1.0/product-profile.dtd">
 
 <instance-profile id="horizpipes-design-documents"
-                 name="Horizpipes Design Document"
-                 start-page="Horizpipes-Design-MD1.md">
+                 name="Horizpipes Design Documents"
+                 start-page="HZP1-High-Level-Architecture.md">
 
-    <toc-element topic="Horizpipes-Design-MD1.md"/>
+    <toc-element topic="HZP1-High-Level-Architecture.md"/>
 </instance-profile>

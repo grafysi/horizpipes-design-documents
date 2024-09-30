@@ -1,4 +1,4 @@
-# Horizpipes Design MD1
+# HZP1 - High-level architecture
 
 Horizpipes is a realtime integration system designed specific for streaming
 data from EHR databases of healthcare providers to analytics graph databases

@@ -8,35 +8,8 @@ The following figure depicts components of Horizpipes and the flow of data
 through them.
 
 ```plantuml
-@startuml
-
-'https://plantuml.com/component-diagram
-
-'skinparam defaultFontSize 20
-
-database "DataSource"
-
-component "Ingestor"
-
-component "SourcePort"
-
-component "Processor"
-
-component "SinkPort"
-
-component "Loader"
-
-database "DataStore"
-
-[DataSource] -r-> [Ingestor]: tx_logs
-[Ingestor] -r-> [SourcePort]: change_records
-[SourcePort] -r-> [Processor]: transact_records
-[Processor] --> [SinkPort]: harmonized_records
-[SinkPort] -l-> [Loader]: harmonized_records
-[Loader] -l-> [DataStore]: update_queries
-
-@enduml
 ```
+{src = "puml/High_Level_Architecture.puml"}
 
 ## Ingestor
 

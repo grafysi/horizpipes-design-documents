@@ -18,7 +18,7 @@ frame Processor {
 }
 
 interface SinkQueueRegistry
-Dispatcher .r.> SinkPortRegistry
+Dispatcher .r.> SinkQueueRegistry
 
 interface FailToleranceByReplay
 interface Reversible

@@ -5,6 +5,6 @@
 <instance-profile id="horizpipes-design-documents"
                  name="Horizpipes Design Documents"
                  start-page="HZP1-High-Level-Architecture.md">
-
     <toc-element topic="HZP1-High-Level-Architecture.md"/>
+    <toc-element topic="HZP2-Ingestor-API.md"/>
 </instance-profile>

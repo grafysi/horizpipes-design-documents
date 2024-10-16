@@ -1,0 +1,32 @@
+@startuml
+'https://plantuml.com/component-diagram
+
+
+database "PostgresDB" as postgres
+
+component "Central Server" as centralServer
+
+component "Ingestor Controller" as ingestorController
+
+component "Processor controller" as processorController
+
+component "Loader controller" as loaderController
+
+postgres <- centralServer
+
+ingestorController -up-> centralServer
+
+processorController -up-> centralServer
+
+loaderController -up-> centralServer
+
+interface "ConfigurationAPI" as configurationApi
+centralServer .up-> configurationApi
+
+interface "MetadataAPI" as metadataApi
+centralServer .up-> metadataApi
+
+component User as user
+centralServer <- user
+
+@enduml

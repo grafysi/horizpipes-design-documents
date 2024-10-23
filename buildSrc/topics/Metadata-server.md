@@ -55,11 +55,16 @@ Apicurio definition schema
 
 #### Data schema
 
-```textmate
+```text
 syntax = "proto3"
 Struct jsonValue = 1
 ```
 
+## Architecture
+
+```plantuml
+```
+{src = "puml/metadata-server/Architecture.puml"}
 
 
 

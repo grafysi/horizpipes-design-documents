@@ -1,0 +1,46 @@
+@startuml
+'https://plantuml.com/component-diagram
+
+
+
+component "FrontController"
+
+component "ResourceFormatter"
+
+component "FileStoreFormatter"
+
+component "TableStoreFormatter"
+
+component "JsonStoreFormatter"
+
+component "ResourceValidator"
+
+component "FileStoreValidator"
+
+component "TableStoreValidator"
+
+component "JsonStoreValidator"
+
+component "ResourceWriter"
+component "TableStoreWriter"
+component "FileStoreWriter"
+component "JsonStoreWriter"
+
+[FrontController] -down-> [ResourceFormatter]
+[FrontController] -down-> [FileStoreFormatter]
+[FrontController] -down-> [TableStoreFormatter]
+[FrontController] -down-> [JsonStoreFormatter]
+
+[ResourceFormatter] -down-> [ResourceValidator]
+[FileStoreFormatter] -down-> [FileStoreValidator]
+[TableStoreFormatter] -down-> [TableStoreValidator]
+[JsonStoreFormatter] -down-> [JsonStoreValidator]
+
+[ResourceValidator] -down-> [ResourceWriter]
+[FileStoreValidator] -down-> [FileStoreWriter]
+[TableStoreValidator] -down-> [TableStoreWriter]
+[JsonStoreValidator] -down-> [JsonStoreWriter]
+
+
+
+@enduml

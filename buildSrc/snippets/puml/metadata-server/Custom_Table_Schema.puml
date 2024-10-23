@@ -1,0 +1,27 @@
+@startuml
+
+skinparam linetype ortho
+
+frame "Custom_Table_Schema" {
+    entity "custom_table_1" {
+        ...
+    }
+
+    entity "custom_table_2" {
+            ...
+    }
+}
+@enduml
+
+
+
+
+
+
+
+
+
+
+
+
+

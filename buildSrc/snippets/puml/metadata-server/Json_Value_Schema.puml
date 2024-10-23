@@ -1,0 +1,28 @@
+@startuml
+
+skinparam linetype ortho
+
+frame "Json_Value_Schema" {
+    entity "json_values" as jsonval {
+        *id : integer <<generated>>
+        *name : string
+        *value : jsonb
+        --
+        *definition : integer
+    }
+}
+
+@enduml
+
+
+
+
+
+
+
+
+
+
+
+
+

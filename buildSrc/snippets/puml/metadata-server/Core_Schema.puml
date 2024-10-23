@@ -1,0 +1,79 @@
+@startuml
+
+skinparam linetype ortho
+
+
+
+frame "Core_Schema" {
+
+    entity "resources" as res {
+        *id : integer <<generated>>
+        *name : string
+        --
+        *type : enum {table, jsonc, json, avro, file, rawbyte}
+        *definition : integer
+        *data : bytea
+        lease : integer
+    }
+
+    entity "revision_logs" as resrev {
+        *id : integer <<generated>>
+        *name : string
+        *previous : integer
+        *operation : enum {create, update, delete}
+        *change_data  : bytea
+        --
+        *resource : integer
+    }
+
+    /' supported value definition types are:
+        - TableDefinition
+        - JsoncDefinition
+        - JsonDefinition
+        - AvroDefinition
+        - FileDefinition
+        - RawByteDefinition '/
+    entity "resource_definitions" as valdef {
+        *id : integer <<generated>>
+        *name : string <<unique>>
+        *type : enum {table, jsonc, json, avro, file, rawbyte}
+        *definition : jsonb
+    }
+
+    res ||--o{ resrev
+    resrev |o--|| resrev
+    res ||--|| valdef
+
+    entity "json_values" as jsonval {
+        *id : integer <<generated>>
+        --
+        *resource : integer
+        *value : jsonb
+    }
+
+    res ||--|| jsonval
+
+    frame "Custom_Table_Schema" {
+        entity "custom_table_1" {
+            ...
+        }
+
+        entity "custom_table_2" {
+            ...
+        }
+    }
+}
+@enduml
+
+
+
+
+
+
+
+
+
+
+
+
+

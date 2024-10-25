@@ -1,0 +1,51 @@
+@startuml
+'https://plantuml.com/component-diagram
+
+component "server"
+
+component "table-store"
+
+component "file-store"
+
+component "json-store"
+
+component "dbutils"
+
+component "store-manager"
+
+component "resource-store"
+
+component "controller-manager"
+
+component "resource-controller"
+
+[server] -down-> [controller-manager]
+
+[controller-manager] -down-> [resource-controller]
+
+[resource-controller] -down-> [store-manager]
+
+[store-manager] -down-> [table-store]
+[store-manager] -down-> [file-store]
+[store-manager] -down-> [json-store]
+[store-manager] -down-> [resource-store]
+
+[resource-store] -down-> [dbutils]
+[table-store] -down-> [dbutils]
+[file-store] -down-> [dbutils]
+[json-store] -down-> [dbutils]
+@enduml
+
+
+
+
+
+
+
+
+
+
+
+
+
+

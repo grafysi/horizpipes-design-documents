@@ -66,6 +66,12 @@ Struct jsonValue = 1
 ```
 {src = "puml/metadata-server/Architecture.puml"}
 
+## Module diagram
+
+```plantuml
+```
+{src = "puml/metadata-server/Module_Diagram.puml"}
+
 
 
 

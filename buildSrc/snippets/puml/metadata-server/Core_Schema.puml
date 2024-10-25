@@ -11,19 +11,19 @@ frame "Core_Schema" {
         *name : string
         --
         *type : enum {table, jsonc, json, avro, file, rawbyte}
-        *definition : integer
+        *definition_id : integer
         *data : bytea
         lease : integer
     }
 
     entity "revision_logs" as resrev {
         *id : integer <<generated>>
-        *name : string
-        *previous : integer
+        *previous_revision_id : integer
         *operation : enum {create, update, delete}
-        *change_data  : bytea
+        *log_data  : bytea
         --
-        *resource : integer
+        *resource_id : integer
+        *resource_name : string
     }
 
     /' supported value definition types are:
@@ -37,7 +37,7 @@ frame "Core_Schema" {
         *id : integer <<generated>>
         *name : string <<unique>>
         *type : enum {table, jsonc, json, avro, file, rawbyte}
-        *definition : jsonb
+        *schema : jsonb
     }
 
     res ||--o{ resrev
@@ -47,7 +47,7 @@ frame "Core_Schema" {
     entity "json_values" as jsonval {
         *id : integer <<generated>>
         --
-        *resource : integer
+        *resource_id : integer
         *value : jsonb
     }
 

@@ -17,8 +17,8 @@ frame "Core_Schema" {
     }
 
     entity "revision_logs" as resrev {
-        *id : integer <<generated>>
-        *previous_revision_id : integer
+        *revision : integer <<generated>>
+        *previous_revision : integer
         *operation : enum {create, update, delete}
         *log_data  : bytea
         --
@@ -33,16 +33,25 @@ frame "Core_Schema" {
         - AvroDefinition
         - FileDefinition
         - RawByteDefinition '/
+    entity "resource_type" as restype {
+        *id : integer <<generated>>
+        *name : name
+        *schema : jsonb
+    }
+
+
     entity "resource_definitions" as valdef {
         *id : integer <<generated>>
         *name : string <<unique>>
-        *type : enum {table, jsonc, json, avro, file, rawbyte}
-        *schema : jsonb
+        *type_id : integer
+        *definition : jsonb
     }
 
     res ||--o{ resrev
     resrev |o--|| resrev
-    res ||--|| valdef
+    valdef ||--o{ res
+    restype ||--o{ valdef
+
 
     entity "json_values" as jsonval {
         *id : integer <<generated>>

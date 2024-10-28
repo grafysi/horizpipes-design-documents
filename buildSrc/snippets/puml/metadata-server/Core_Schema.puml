@@ -10,7 +10,6 @@ frame "Core_Schema" {
         *id : integer <<generated>>
         *name : string
         --
-        *type : enum {table, jsonc, json, avro, file, rawbyte}
         *definition_id : integer
         *data : bytea
         lease : integer

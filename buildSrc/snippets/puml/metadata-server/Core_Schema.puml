@@ -11,7 +11,7 @@ frame "Core_Schema" {
         *name : string
         --
         *definition_id : integer
-        *data : bytea
+        *value : bytea
         lease : integer
     }
 

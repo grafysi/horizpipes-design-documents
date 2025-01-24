@@ -15,6 +15,19 @@ frame "Core_Schema" {
         lease : integer
     }
 
+    entity "resource_has_artifact" as res_art {
+        *resource_id : integer
+        *artifact_id : integer
+    }
+
+    entity "artifacts" as art {
+        *id : integer <<generated>>
+        *name : string
+        *type : string
+    }
+
+
+
     entity "revision_logs" as resrev {
         *revision : integer <<generated>>
         *previous_revision : integer
@@ -32,34 +45,53 @@ frame "Core_Schema" {
         - AvroDefinition
         - FileDefinition
         - RawByteDefinition '/
-    entity "resource_type" as restype {
+    /'entity "resource_types" as restype {
         *id : integer <<generated>>
-        *name : name
         *schema : jsonb
+    }'/
+
+    entity "json_artifacts" as jsonart {
+        *id : integer <<generated>>
+        *value : jsonb
     }
 
+    entity "table_artifacts" as tableart {
+        *id : integer <<generated>>
+        *table_schema : jsonb
+        *schema_name : string
+        *table_name : string
+        *value : jsonb
+    }
+
+    entity "adhoc_artifact" as adhoc_art {
+        *id : integer <<generated>>
+        *resource_id : integer
+    }
+
+    entity "file_artifacts" as fileart {
+        *id : integer <<generated>>
+        *value : bytea
+    }
 
     entity "resource_definitions" as valdef {
         *id : integer <<generated>>
         *name : string <<unique>>
-        *type_id : integer
+        *type_name : string
         *definition : jsonb
     }
+
+
+    art ||--|| tableart
+    art ||--|| jsonart
+    art ||--|| adhoc_art
+    art ||--|| fileart
 
     res ||--o{ resrev
     resrev |o--|| resrev
     valdef ||--o{ res
-    restype ||--o{ valdef
 
-
-    entity "json_values" as jsonval {
-        *id : integer <<generated>>
-        --
-        *resource_id : integer
-        *value : jsonb
-    }
-
-    res ||--|| jsonval
+    res ||--o{ res_art
+    art ||--o{ res_art
 
     frame "Custom_Table_Schema" {
         entity "custom_table_1" {

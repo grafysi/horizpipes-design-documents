@@ -1,0 +1,16 @@
+@startuml
+'https://plantuml.com/component-diagram
+
+component "GrpcDispatcher" as grpc
+
+component "ResourceTypeDispatcher" as res_type
+
+component "FunctionHandlers" as handlers
+
+component "ArtifactService" as art_service
+
+grpc -down-> res_type
+res_type -down-> handlers
+handlers -down-> art_service
+
+@enduml

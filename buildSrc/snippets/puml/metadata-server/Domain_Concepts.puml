@@ -1,0 +1,30 @@
+@startuml
+'https://plantuml.com/component-diagram
+
+
+component "ResourceType" as res_type
+
+component "DefinitionSchema" as def_schema
+
+res_type -down-> def_schema
+
+component "Definition" as def
+
+interface "ResourceSchema" as res_schema
+interface "ArtifactListing" as art_listing
+
+def -r-> res_schema
+def -l-> art_listing
+
+component "Resource" as res
+
+def_schema -down-> def
+def -down-> res
+
+component "Artifacts" as art
+
+res -down-> art
+
+
+
+@enduml

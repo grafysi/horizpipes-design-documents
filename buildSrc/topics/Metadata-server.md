@@ -1,5 +1,7 @@
 # HZP4 - Metadata server
 
+## Concept model
+
 ## Data model
 
 Metadata server uses postgresql as backend database. The data model is defined in the following diagram:
